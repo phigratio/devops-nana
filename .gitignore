@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# Secrets and local config -- never commit these
+.env
+.env.local
+.env.*.local
+secrets/
+*.pem
+*.key
+
+# Build output
+dist/
+build/
+
+# Backups and dumps
+backups/
+*.gz
+
+# Editors and OS
+.vscode/
+.idea/
+*.swp
+.DS_Store

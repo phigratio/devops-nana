@@ -1,0 +1,7 @@
+node_modules/
+npm-debug.log*
+
+# Real configuration and credentials
+.env
+secrets/*.txt
+backups/

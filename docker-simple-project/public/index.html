@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>User Profiles</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <h1>Users</h1>
+        <button id="newBtn" type="button">+ New</button>
+      </div>
+      <input id="search" type="search" placeholder="Search users…" autocomplete="off" />
+      <ul id="userList" class="user-list"></ul>
+      <p id="listEmpty" class="muted small" hidden>No users yet. Create one to get started.</p>
+    </aside>
+
+    <main class="panel">
+      <form id="profileForm" novalidate>
+        <header class="card-header">
+          <img id="avatar" class="avatar" alt="Profile picture" src="" />
+          <div class="identity">
+            <h2 id="formHeading">New user</h2>
+            <p id="recordMeta" class="muted small"></p>
+          </div>
+        </header>
+
+        <div class="grid">
+          <label>
+            Name <span class="req">*</span>
+            <input name="name" type="text" required autocomplete="off" />
+          </label>
+
+          <label>
+            Title
+            <input name="title" type="text" autocomplete="off" />
+          </label>
+
+          <label>
+            Email
+            <input name="email" type="email" autocomplete="off" />
+          </label>
+
+          <label>
+            Location
+            <input name="location" type="text" autocomplete="off" />
+          </label>
+        </div>
+
+        <label>
+          Image URL
+          <input name="avatarUrl" type="url" placeholder="https://…" autocomplete="off" />
+        </label>
+
+        <label>
+          Bio
+          <textarea name="bio" rows="4"></textarea>
+        </label>
+
+        <div class="actions">
+          <button type="submit" id="saveBtn">Save</button>
+          <button type="button" id="revertBtn" class="secondary">Revert</button>
+          <button type="button" id="deleteBtn" class="danger" hidden>Delete</button>
+          <span id="status" class="status" role="status"></span>
+        </div>
+      </form>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+# Development overlay. Use with:
+#   docker compose -f docker-compose.yml -f docker-compose.dev.yml up
+#
+# Differences from production: source is bind-mounted and reloaded on change,
+# the database port is published for mongosh/Compass, and the hardening that
+# gets in the way of iterating is relaxed.
+services:
+  mongo:
+    ports:
+      - "127.0.0.1:${MONGO_PORT:-27017}:27017"
+
+  app:
+    build:
+      target: runtime
+    environment:
+      NODE_ENV: development
+    command: ["node", "--watch", "server.js"]
+    volumes:
+      - ./server.js:/app/server.js:ro
+      - ./db.js:/app/db.js:ro
+      - ./users.js:/app/users.js:ro
+      - ./public:/app/public:ro
+    read_only: false
+    deploy:
+      resources: {}
+
+  mongo-express:
+    profiles: ["tools", "dev"]
+    environment:
+      ME_CONFIG_BASICAUTH: "false"
